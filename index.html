@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silvia Titania's Cozy Portfolio</title>
+    <!-- Menggunakan font Google agar terkesan cute & cozy -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FFF5F5;
+            --card-bg: #FFFFFF;
+            --primary-red: #FF8A8A;
+            --soft-red: #FFAAA6;
+            --dark-red: #D86D6D;
+            --text-color: #5A4A4A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* HEADER & HERO */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #FFE3E3 0%, #FFC7C7 100%);
+            border-radius: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(255, 138, 138, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--dark-red);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #8A6868;
+        }
+
+        /* FOTO PROFILE & SHANKS */
+        .profile-pics {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .img-holder {
+            width: 150px;
+            height: 150px;
+            background-color: #FFEAEA;
+            border: 4px dashed var(--primary-red);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--dark-red);
+            padding: 10px;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .img-holder:hover {
+            transform: scale(1.05);
+        }
+
+        .img-holder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        /* SECTION STYLE */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+            border: 1px solid #FFE3E3;
+        }
+
+        h2 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: "🌸";
+            font-size: 1.3rem;
+        }
+
+        /* BIODATA & EDUCATION LIST */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .bio-item strong {
+            color: var(--dark-red);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        ul li::before {
+            content: "⭐️";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* GRID FOTO COSPLAY */
+        .cosplay-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .cosplay-box {
+            aspect-ratio: 3/4;
+            background-color: #FFF0F0;
+            border: 3px solid var(--soft-red);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            color: var(--dark-red);
+            font-weight: bold;
+            overflow: hidden;
+        }
+
+        .cosplay-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* MUSIC & ANIME GRID (KOTAK-KOTAK) */
+        .square-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .square-item {
+            background-color: #FFF8F8;
+            border: 2px solid #FFE3E3;
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.01);
+        }
+
+        .album-art, .anime-art {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background-color: #FFE6E6;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #A38585;
+            font-weight: bold;
+            overflow: hidden;
+            border: 1px solid #FFD1D1;
+        }
+
+        .album-art img, .anime-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .square-item p {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .square-item span {
+            font-size: 0.8rem;
+            color: #A89595;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* MEDIA SOSIAL BUTTONS */
+        .socmed-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .socmed-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--primary-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(255, 138, 138, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .socmed-btn:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(216, 109, 109, 0.4);
+        }
+
+        .socmed-btn.ig { background-color: #E1306C; box-shadow: 0 4px 10px rgba(225, 48, 108, 0.3); }
+        .socmed-btn.ig:hover { background-color: #C13584; }
+
+        .socmed-btn.tiktok { background-color: #010101; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+        .socmed-btn.tiktok:hover { background-color: #252525; }
+
+        .socmed-btn.apple { background-color: #FA243C; box-shadow: 0 4px 10px rgba(250, 36, 60, 0.3); }
+        .socmed-btn.apple:hover { background-color: #D11B31; }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #A89595;
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        /* RESPONSIVE FIX */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER / PERKENALAN -->
+    <header>
+        <h1>Hello, I'm Silvia Titania!</h1>
+        <p>Welcome to my cute & cozy little space ✨</p>
+        
+        <div class="profile-pics">
+            <!-- Tempat Foto Kamu -->
+            <div class="img-holder">
+                <!-- Ganti src="nama-foto-kamu.jpg" kalau sudah ada fotonya -->
+                <img src="silvia.jpg" alt="Foto Silvia" onerror="this.style.display='none';">
+                <span>[ Foto Silvia ]</span>
+            </div>
+            <!-- Tempat Foto Shanks -->
+            <div class="img-holder">
+                <!-- Ganti src="shanks.jpg" kalau sudah ada fotonya -->
+                <img src="shanks.jpg" alt="Foto Shanks" onerror="this.style.display='none';">
+                <span>[ Foto Shanks ❤️ ]</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- TENTANG AKU & SEKOLAH -->
+    <section>
+        <h2>Tentang Aku</h2>
+        <div class="bio-grid">
+            <div class="bio-item">
+                <p><strong>Tempat, Tanggal Lahir:</strong><br>Bandung, 15 Maret 2010</p>
+            </div>
+            <div class="bio-item">
+                <p><strong>Asal Sekolah:</strong></p>
+                <ul>
+                    <li>SD: MI Al-Mukhlis</li>
+                    <li>SMP: SMPN 35 Bandung</li>
+                    <li>SMA: SMAN 19 Bandung</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGALAMAN & CITA-CITA -->
+    <section>
+        <h2>Pengalaman & Impian</h2>
+        <div class="bio-grid">
+            <div>
+                <p><strong>Pengalaman Sekolah:</strong></p>
+                <ul>
+                    <li>Pernah menjadi anggota OSIS di SMP.</li>
+                    <li>Aktif di Komunitas Anti-Bully saat SMP.</li>
+                </ul>
+            </div>
+            <div>
+                <p><strong>Masa Depan & Impian:</strong></p>
+                <ul>
+                    <li><strong>Kampus Impian:</strong> Universitas Padjadjaran</li>
+    <!-- JURUSAN & CITA-CITA -->
+    <section>
+        <h2>Impian & Masa Depan</h2>
+        <div class="bio-grid">
+            <div>
+                <p><strong>Jurusan & Kampus Impian:</strong><br>Ilmu Komunikasi, Universitas Padjadjaran</p>
+            </div>
+            <div>
+                <p><strong>Cita-cita:</strong><br>Menjadi seorang Writer & mempunyai Cafe kecil yang cozy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOBI: COSPLAY (4 SLOT FOTO) -->
+    <section>
+        <h2>Hobi: Cosplay</h2>
+        <p style="margin-bottom: 15px;">Ini beberapa dokumentasi foto saat aku lagi cosplay! 📸</p>
+        <div class="cosplay-grid">
+            <div class="cosplay-box">
+                <img src="cosplay1.jpg" alt="Cosplay 1" onerror="this.style.display='none';">
+                <span>Cosplay Pic 1</span>
+            </div>
+            <div class="cosplay-box">
+                <img src="cosplay2.jpg" alt="Cosplay 2" onerror="this.style.display='none';">
+                <span>Cosplay Pic 2</span>
+            </div>
+            <div class="cosplay-box">
+                <img src="cosplay3.jpg" alt="Cosplay 3" onerror="this.style.display='none';">
+                <span>Cosplay Pic 3</span>
+            </div>
+            <div class="cosplay-box">
+                <img src="cosplay4.jpg" alt="Cosplay 4" onerror="this.style.display='none';">
+                <span>Cosplay Pic 4</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOP FAVORITE SONGS (3 KOTAK) -->
+    <section>
+        <h2>My Top Favorite Songs</h2>
+        <div class="square-grid">
+            <div class="square-item">
+                <div class="album-art">
+                    <img src="album1.jpg" alt="Album Art 1" onerror="this.style.display='none';">
+                    <span>Album Art 🎵</span>
+                </div>
+                <p>How to Pretend</p>
+                <span>Track 01</span>
+            </div>
+            <div class="square-item">
+                <div class="album-art">
+                    <img src="album2.jpg" alt="Album Art 2" onerror="this.style.display='none';">
+                    <span>Album Art 🎵</span>
+                </div>
+                <p>Animal</p>
+                <span>Track 02</span>
+            </div>
+            <div class="square-item">
+                <div class="album-art">
+                    <img src="album3.jpg" alt="Album Art 3" onerror="this.style.display='none';">
+                    <span>Album Art 🎵</span>
+                </div>
+                <p>KARMA</p>
+                <span>Track 03</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOP 5 ANIME (5 KOTAK FOTO) -->
+    <section>
+        <h2>My Top 5 Anime</h2>
+        <div class="square-grid">
+            <div class="square-item">
+                <div class="anime-art">
+                    <img src="anime1.jpg" alt="Bleach" onerror="this.style.display='none';">
+                    <span>Poster Art 🎬</span>
+                </div>
+                <p>Bleach</p>
+            </div>
+            <div class="square-item">
+                <div class="anime-art">
+                    <img src="anime2.jpg" alt="One Piece" onerror="this.style.display='none';">
+                    <span>Poster Art 🎬</span>
+                </div>
+                <p>One Piece</p>
+            </div>
+            <div class="square-item">
+                <div class="anime-art">
+                    <img src="anime3.jpg" alt="Fullmetal Alchemist" onerror="this.style.display='none';">
+                    <span>Poster Art 🎬</span>
+                </div>
+                <p>Fullmetal Alchemist</p>
+            </div>
+            <div class="square-item">
+                <div class="anime-art">
+                    <img src="anime4.jpg" alt="Gachiakuta" onerror="this.style.display='none';">
+                    <span>Poster Art 🎬</span>
+                </div>
+                <p>Gachiakuta</p>
+            </div>
+            <div class="square-item">
+                <div class="anime-art">
+                    <img src="anime5.jpg" alt="Orb on the movement earth" onerror="this.style.display='none';">
+                    <span>Poster Art 🎬</span>
+                </div>
+                <p>Orb on the Movement Earth</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEDIA SOSIAL BUTTONS -->
+    <section style="text-align: center;">
+        <h2>Let's Keep in Touch!</h2>
+        <p style="margin-bottom: 20px;">Yuk mutualan lewat media sosial aku di bawah ini:</p>
+        <div class="socmed-container">
+            <a href="#" target="_blank" class="socmed-btn ig">Instagram</a>
+            <a href="#" target="_blank" class="socmed-btn tiktok">TikTok</a>
+            <a href="#" target="_blank" class="socmed-btn apple">Apple Music</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Made with ❤️ by Silvia Titania | © 2026</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
+
